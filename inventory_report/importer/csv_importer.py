@@ -1,12 +1,11 @@
 from inventory_report.importer.importer import Importer
 import csv
 
-INVALID_FILE = "Arquivo inválido!"
-
 
 class CsvImporter(Importer):
     @classmethod
     def import_data(cls, path):
+        INVALID_FILE = "Arquivo inválido!"
         if path.endswith("csv"):
             with open(path, encoding="utf-8") as csv_file:
                 file = csv.DictReader(csv_file)

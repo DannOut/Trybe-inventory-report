@@ -2,12 +2,11 @@ from inventory_report.importer.importer import Importer
 
 import xmltodict
 
-INVALID_FILE = "Arquivo inválido!"
-
 
 class XmlImporter(Importer):
     @classmethod
     def import_data(cls, path):
+        INVALID_FILE = "Arquivo inválido!"
         if path.endswith(".xml"):
             with open(path) as xml_file:
                 file = xmltodict.parse(xml_file.read())
