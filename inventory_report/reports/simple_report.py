@@ -5,13 +5,13 @@ from datetime import date
 class SimpleReport:
     @staticmethod
     def generate(list):
-        manufaturing_date = [item["data_de_fabricacao"] for item in list]
+        manufaturing_date = [info["data_de_fabricacao"] for info in list]
         expiration_date = [
-            item["data_de_validade"]
-            for item in list
-            if item["data_de_validade"] > str(date.today())
+            info["data_de_validade"]
+            for info in list
+            if info["data_de_validade"] > str(date.today())
         ]
-        companies = [item["nome_da_empresa"] for item in list]
+        companies = [info["nome_da_empresa"] for info in list]
         company_with_more_products = Counter(companies).most_common()[0]
         return (
             f"Data de fabricação mais antiga: {min(manufaturing_date)}\n"
